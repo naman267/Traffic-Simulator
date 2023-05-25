@@ -468,13 +468,13 @@ def repeat():
     if secondGreen == 0:
         print("First status - ", congestionStatus)
         if congestionStatus == "High":
-            signals[currentGreen].green = 35
+            signals[currentGreen].green = 50
         elif congestionStatus == "Medium":
-            signals[currentGreen].green = 25
+            signals[currentGreen].green = 30
         else:
             signals[currentGreen].green = 15
     else:
-        signals[currentGreen].green = 15
+        signals[currentGreen].green = 20
 
     while(signals[currentGreen].green > 0):
         printStatus()
@@ -504,9 +504,12 @@ def repeat():
         if (congestionStatus == "High"):
             nextGreen = currentGreen
             secondGreen = 1
+        elif (congestionStatus == "Medium"):
+            nextGreen = currentGreen
+            secondGreen = 1
     else:
         secondGreen = 0
-    currentYellow = 0
+        currentYellow = 0
 
     # reset all signal times of current signal to default times
     signals[currentGreen].green = defaultGreen
@@ -686,7 +689,6 @@ def congestionIndexCalculation(direction):
 
     #print("Averages - ", direction, bikeAvg, carAvg, fourWheelerAvg)
     if congestion_index >= 0.8:
-
         return "High"
     elif congestion_index >= 0.6:
         return "Medium"
