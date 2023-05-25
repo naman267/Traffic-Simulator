@@ -568,7 +568,6 @@ def updateValues():
                 else:
                     shift_light = i
                     rem_time = max(rem_time, signals[i].green - 5)
-                    print(signals[i].green - 5)
                     signals[i].green = min(5, signals[i].green)
                     signals[i].green -= 1
                     switched = 1
