@@ -501,15 +501,12 @@ def repeat():
         time.sleep(1)
         congestionStatus = congestionIndexCalculation(currentGreen)
         print("Second Status", congestionStatus)
-        if (congestionStatus == "High"):
-            nextGreen = currentGreen
-            secondGreen = 1
-        elif (congestionStatus == "Medium"):
+        if (congestionStatus == "High" or congestionStatus == "Medium"):
             nextGreen = currentGreen
             secondGreen = 1
     else:
         secondGreen = 0
-        currentYellow = 0
+    currentYellow = 0
 
     # reset all signal times of current signal to default times
     signals[currentGreen].green = defaultGreen
